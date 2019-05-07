@@ -17,10 +17,19 @@ public class BeanMapper {
 
     private static MapperFacade mapper;
 
+    private static MapperFacade mapperNulls;
+
     static {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
         mapper = mapperFactory.getMapperFacade();
+        MapperFactory mapperFactory2 = new DefaultMapperFactory.Builder().mapNulls(false).build();
+        mapperNulls = mapperFactory2.getMapperFacade();
     }
+
+    public static MapperFacade getMapperNulls() {
+        return mapperNulls;
+    }
+
 
     /**
      * 简单的复制出新类型对象.
